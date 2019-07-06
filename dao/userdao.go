@@ -72,3 +72,33 @@ func UpdateToken(userName, token string) bool {
 	}
 	return true
 }
+
+type User struct {
+	UserName string
+	Email string
+	Phone string
+	SignupAt string
+	LastActiveAt string
+	Status int
+}
+
+//用户信息查询
+func GetUserInfo(userName string) (*User,error) {
+	user := &User{}
+
+	stmt,err := mydb.DBConn().Prepare(
+		"select user_name,signup_at from tbl_user where user_name=? limit 1",
+	)
+	if err != nil {
+		fmt.Println("Failed to select,err:" + err.Error())
+		return nil,err
+	}
+	defer stmt.Close()
+
+	err = stmt.QueryRow(userName).Scan(&user.UserName,&user.SignupAt)
+	if err != nil {
+		return nil,err
+	}
+	
+	return user,nil
+}

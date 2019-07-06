@@ -65,6 +65,13 @@
 </body>
 
 <script lang="javascript">
+
+  function  queryParams(){
+    token = localStorage.getItem("token")
+    username = localStorage.getItem("username")
+    return "username="+username+"&token="+token
+  }
+
   window.onload = function () {
     var username = document.getElementById('username');
     $.ajax({
@@ -78,7 +85,7 @@
         if (resp.code == 10005) {
           window.location.href = "/static/view/signin.html";
         }
-        document.getElementById("username").innerHTML = resp.data.Username;
+        document.getElementById("username").innerHTML = resp.data.UserName;
         document.getElementById("regtime").innerHTML = resp.data.SignupAt;
         updateFileList();
       }

@@ -79,7 +79,7 @@
             success: function(body) {
                 var resp = JSON.parse(body);
                 localStorage.setItem("token", resp.data.Token)
-                localStorage.setItem("username", resp.data.Username)
+                localStorage.setItem("username", resp.data.UserName)
                 window.location.href = resp.data.Location;
             }
         });
