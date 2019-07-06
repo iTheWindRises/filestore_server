@@ -1,0 +1,6 @@
+POST http://localhost:8899/file/update?op=0&filename=城市打工.jpg&fileHash=4f83062c0c1f4c50f73b878d50187d7b0e85c014 http/1.1
+POST http://localhost:8899/file/delete?fileHash=4f83062c0c1f4c50f73b878d50187d7b0e85c014 http/1.1
+GET  http://localhost:8899/file/query?limit=3 http/1.1
+GET  http://localhost:8899/file/meta?fileHash=1241ab75e368fd967c886331fc7e7a85b25da5a1 http/1.1
+
+POST http://localhost:8081/checkUser http/1.1
